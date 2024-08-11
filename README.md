@@ -22,7 +22,7 @@ Nuestro objetivo es desarrollar una página de noticias basados en la informacio
 Clonar el repositorio de forma local.
 
 ```shell
-git clone 
+git clone https://github.com/LucianoFlores1/Noti-app.git
 ```
 
 Instalación del módulo npm.
