@@ -100,9 +100,11 @@ News_0.1
 ## ⚙️ Testing 
 
  Se realizaron diversas pruebas de rendimiento.
+ 
  Barra de búsqueda para los artículos.
 
 ## 📚 Documentación
 
  Se logró documentar de manera técnica el proyecto.
+ 
  Despliegue de la aplicación.
