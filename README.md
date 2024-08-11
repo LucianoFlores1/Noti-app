@@ -12,20 +12,35 @@ Nuestro objetivo es desarrollar una página de noticias basados en la informacio
 
 News_0.1
  ├───node_modules
+ 
  ├───public
+ 
  ├───src/
+ 
  │   ├───assets/
+ 
  │   ├───components/
+ 
  │   ├───contexts/
+ 
  │   ├───hooks/
+ 
  │   ├───routes/
+ 
  └───index.css   
+ 
  └───main.jsx
+ 
 └───.env
+
 └───index.html
+
 └───package-lock.json
+
 └───package.json
+
 └───vite.config.json
+
 └───README.md
 
 
