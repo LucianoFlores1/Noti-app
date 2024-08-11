@@ -1,5 +1,8 @@
 # 📰 Noti-App 
 
+![ikm](https://github.com/user-attachments/assets/6e7c508a-0912-4cb7-b37a-77ed44677053)
+
+
 ## ⭐ Introducción
 
 Noti-App es una aplicación web de noticias serias para gente seria, desarrollada con ReactJS, con el fin de demostrar nuestros conocimientos adquiridos en el cursado de la materia Programación III.
