@@ -5,7 +5,7 @@
 
 Noti-App es una aplicación web de noticias serias para gente seria, desarrollada con ReactJS, con el fin de demostrar nuestros conocimientos adquiridos en el cursado de la materia Programación III.
 
-## 🫂 Integrantes 
+## 🙋‍♂️ Integrantes 
 
 🗿 Flores Luciano
 
