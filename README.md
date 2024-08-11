@@ -17,7 +17,8 @@ Nuestro objetivo es desarrollar una página de noticias basados en la informacio
 ## Enrutamiento
  Se trabajó este proyecto utilizando las funciones de enrutamiento y protección adecuadas según se requerían. (Router, Layout, ProtectedRoute).
 
-  ###Renderizado del proyecto
+## Renderizado del proyecto
+  
   /Home: Sección que muestra un mensaje de bienvenida, con una imágen, una barra para desplazarse por las secciones y un Footer correspondiente.
   
   /Login: Sección que permite al usuario iniciar sesión con sus credenciales correspondientes.
