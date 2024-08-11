@@ -4,6 +4,12 @@
 
 Noti-App es una aplicación web de noticias serias para gente seria, desarrollada con ReactJS, con el fin de demostrar nuestros conocimientos adquiridos en el cursado de la materia Programación III.
 
+##Integrantes
+
+Flores Luciano
+
+Salto Ignacio
+
 ## Objetivos
 
 Nuestro objetivo es desarrollar una página de noticias basados en la informacion otorgada por la API de la academia CIMNE-IBER, logrando implementar los requisitos mínimos solicitados.
