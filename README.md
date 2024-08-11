@@ -11,6 +11,7 @@ Nuestro objetivo es desarrollar una página de noticias basados en la informacio
 ## Estructura del proyecto
 
 News_0.1
+
  ├───node_modules
  
  ├───public
