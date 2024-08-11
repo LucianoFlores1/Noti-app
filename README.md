@@ -10,11 +10,31 @@ Nuestro objetivo es desarrollar una página de noticias basados en la informacio
 
 ## Estructura del proyecto
 
+News_0.1
+ ├───node_modules
+ ├───public
+ ├───src/
+ │   ├───assets/
+ │   ├───components/
+ │   ├───contexts/
+ │   ├───hooks/
+ │   ├───routes/
+ └───index.css   
+ └───main.jsx
+└───.env
+└───index.html
+└───package-lock.json
+└───package.json
+└───vite.config.json
+└───README.md
+
 
 ## Consumo de la API
+
  Se solicitan peticiones para poder consumir los endpoints de la sección InfoSphere, en donde se obtienen los diversos datos sobre los artículos, categorías, etc.
 
 ## Enrutamiento
+
  Se trabajó este proyecto utilizando las funciones de enrutamiento y protección adecuadas según se requerían. (Router, Layout, ProtectedRoute).
 
 ## Renderizado del proyecto
@@ -29,10 +49,12 @@ Nuestro objetivo es desarrollar una página de noticias basados en la informacio
   Solo en la sección /home, no se implementa una ruta protegida, a comparación de las demás.
 
 ## Testing
+
  Se realizaron diversas pruebas de rendimiento.
  Barra de búsqueda para los artículos.
 
 ## Documentación
+
  Se logró documentar de manera técnica el proyecto.
  Despliegue de la aplicación.
   
