@@ -100,7 +100,7 @@ News_0.1
  Se realizaron diversas pruebas de rendimiento.
  Barra de búsqueda para los artículos.
 
-## Documentación
+## 📚 Documentación
 
  Se logró documentar de manera técnica el proyecto.
  Despliegue de la aplicación.
