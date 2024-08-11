@@ -7,6 +7,7 @@ import ArticleDetail from "../components/ArticleDetails";
 
 //
 import Layout from "./Layout";
+import ProtectedRoute from "./ProtectedRoute";
 
 
 const Router = createBrowserRouter([
@@ -25,15 +26,18 @@ const Router = createBrowserRouter([
             },
             {
                 path: "articles",
-                element: <Articles />,
+                element: (
+                    <ProtectedRoute>
+                        <Articles />
+                    </ProtectedRoute>
+                ),
             },
             {
                 path: "articles/:id",
-                element: <ArticleDetail />
-            },
-            {
-                path: "create",
-                element: <ArticleForm />
+                element: (
+                    <ProtectedRoute>
+                        <ArticleDetail />
+                    </ProtectedRoute>)
             }
         ],
     },

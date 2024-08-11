@@ -5,7 +5,7 @@ import "./NavBar.css"
 
 const NavBar = () => {
 
-    const logout = useAuth('actions').logout; //funcion creada a ultimo momento para cerrar 
+    const logout = useAuth('actions').logout;
 
 
     return (
