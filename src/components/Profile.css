@@ -1,0 +1,102 @@
+/* Estilo para el contenedor principal */
+.container {
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+/* Estilo para el cuadro contenedor de los datos */
+.box {
+    background-color: #f8f8f8; /* Fondo claro */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    padding: 2rem;
+}
+
+/* Estilo para los títulos */
+.title {
+    font-family: 'Arial', sans-serif;
+    color: #363636; /* Color oscuro */
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    font-family: 'Arial', sans-serif;
+    color: #4a4a4a; /* Color gris oscuro */
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Estilo para los campos de entrada */
+.input {
+    border: 2px solid #209cee; /* Borde azul */
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    background-color: #e6f7ff; /* Fondo azul claro */
+    color: #363636;
+}
+
+.input:read-only {
+    background-color: #e6f7ff; /* Fondo azul claro para campos de solo lectura */
+    cursor: not-allowed;
+}
+
+/* Estilo para las etiquetas */
+.label {
+    font-weight: bold;
+    color: #363636; /* Color oscuro */
+    margin-bottom: 0.5rem;
+}
+
+/* Estilo para el texto de la biografía */
+.content {
+    font-size: 1rem;
+    color: #4a4a4a; /* Color gris oscuro */
+    text-align: justify;
+}
+
+/* Estilo para los botones */
+.buttons {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.button {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.button.is-link.is-light {
+    background-color: #209cee; /* Azul claro */
+    color: #fff;
+}
+
+.button.is-link.is-light:hover {
+    background-color: #1976d2; /* Azul más oscuro al pasar el mouse */
+}
+
+.button.is-danger.is-light {
+    background-color: #ff3860; /* Rojo claro */
+    color: #fff;
+}
+
+.button.is-danger.is-light:hover {
+    background-color: #d32f2f; /* Rojo más oscuro al pasar el mouse */
+}
+
+/* Estilo para mensajes de carga y error */
+.has-text-centered {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #4a4a4a;
+    margin-top: 2rem;
+}
+
+.has-text-danger {
+    color: #ff3860;
+}
