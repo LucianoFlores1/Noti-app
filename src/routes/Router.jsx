@@ -10,6 +10,7 @@ import ArticleForm from "../components/ArticleForm"; // formulario para crear ar
 import Layout from "./Layout";
 import ProtectedRoute from "./ProtectedRoute";
 import { CategoryList } from "../hooks/fetchCategories"; // Obtener una lista de las categorias de los articulos
+import Profile from "../components/Profile";
 
 
 const Router = createBrowserRouter([
@@ -48,6 +49,14 @@ const Router = createBrowserRouter([
             {
                 path: "categories",
                 element: <CategoryList />
+            },
+            {
+                path: "profile",
+                element: (
+                    <ProtectedRoute>
+                        <Profile />
+                    </ProtectedRoute>
+                ),
             }
         ],
     },
