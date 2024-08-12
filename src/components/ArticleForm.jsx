@@ -8,7 +8,7 @@ const ArticleForm = () => {
 
     useEffect(() => {
 
-        fetch(`https://sandbox.academiadevelopers.com/infosphere/categories`).then((response) => {
+        fetch(`https://sandbox.academiadevelopers.com/infosphere/categories/`).then((response) => {
             if (!response.ok) {
                 throw new Error("Error en la peticion");
             }
