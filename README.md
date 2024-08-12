@@ -88,14 +88,19 @@ News_0.1
 
 ### 💻 Renderizado del proyecto 
   
-  /Home: Sección que muestra un mensaje de bienvenida, con una imágen, una barra para desplazarse por las secciones y un Footer correspondiente.
+  /Home: Sección que muestra un mensaje de bienvenida, una seccion con las noticias ordenadas en forma de cascada con una imágen, su respectivo titulo y el cuerpo de la noticia, una barra para desplazarse por las  
+  secciones y un Footer correspondiente. La pagina tambien cuenta con un boton para cargar mas noticias.
   
   /Login: Sección que permite al usuario iniciar sesión con sus credenciales correspondientes.
   
-  /Articles: Sección en donde muestra las noticias en forma de artículos. Cuando el usuario clickea sobre uno de ellos, se despliega la noticia completa, otorgando una visión más completa de la información.
+  /Articles: Sección en donde muestra las noticias en forma de miniaturas. Cuando el usuario clickea sobre uno de ellos, se despliega la noticia completa, otorgando una visión más completa de la información.
   Cuenta con una barra de búsqueda para que el usuario pueda encontrar noticias de manera más precisa.
 
-  Solo en la sección /home, no se implementa una ruta protegida, a comparación de las demás.
+  /articles/id: Una seccion que te dirige hacia la noticia con el ID indicado al hacer click en alguna noticia, por ejemplo 'articles/91'.
+
+  Boton 'Fuera': Boton que elimina el token de usuario del almacenamiento local, permite el delogueo de la app.
+  
+  La sección /home, es la unica en la que no se implementa una ruta protegida, a comparación de las demás.
 
 ## ⚙️ Testing 
 
