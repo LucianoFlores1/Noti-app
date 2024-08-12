@@ -4,6 +4,7 @@ import Home from '../components/Home';
 import Login from '../components/Login';
 import Articles from '../components/Articles';
 import ArticleDetail from "../components/ArticleDetails";
+import ArticleForm from "../components/ArticleForm";
 
 //
 import Layout from "./Layout";
@@ -38,6 +39,10 @@ const Router = createBrowserRouter([
                     <ProtectedRoute>
                         <ArticleDetail />
                     </ProtectedRoute>)
+            },
+            {
+                path: "create",
+                element: <ArticleForm />
             }
         ],
     },
