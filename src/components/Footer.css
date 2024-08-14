@@ -2,6 +2,7 @@
     background-color: #2d2d2d; /* Color de fondo oscuro */
     padding: 20px 0;
     color: #ffffff; /* Texto blanco */
+    margin-top: 18.8%;
   }
   
   .footer .content {
@@ -13,6 +14,7 @@
   .footer p {
     margin: 10px 0;
     font-size: 14px;
+    color: #ffffff;
   }
   
   .footer a {

@@ -14,7 +14,8 @@ const NavBar = () => {
                 <Link to="/" className="navbar-item">Home</Link>
                 <Link to="/login" className="navbar-item">Login</Link>
                 <Link to="/articles" className="navbar-item">Articles</Link>
-                <button onClick={logout} className='navbar-item'>Fuera</button>
+                <Link to="/profile" className="navbar-item">Perfil</Link>
+                <button onClick={logout} className='navbar-item' id='salir'>Logout</button>
 
             </div>
 
