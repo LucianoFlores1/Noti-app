@@ -1,25 +1,11 @@
 import { useState, useEffect } from "react";
-
+import { useFetchCategories } from "../hooks/fetchCategories";
+import "./ArticleForm.css"
 
 const ArticleForm = () => {
-    const [categories, setCategories] = useState([]);
+    const { categories, loading, error } = useFetchCategories();
     const [selectedCategories, setSelectedCategories] = useState([]);
     const [articleData, setArticleData] = useState({ title: "", content: "" });
-
-    useEffect(() => {
-        fetch(`htps://sandbox.academiadevelopers.com/infosphere/categories`).then((response) => {
-            if (!response.ok) {
-                throw new Error("Error en la peticion");
-            }
-            return response.json();
-        })
-            .then((data) => {
-                setCategories(data);
-            })
-            .catch((error) => {
-                console.error("Error al obtener las categorias", error);
-            })
-    }, [])
 
     const handleInputChange = (event) => {
         setArticleData({
@@ -39,10 +25,19 @@ const ArticleForm = () => {
         setSelectedCategories(updatedSelectedCategories);
     };
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        // Lógica para enviar el formulario, por ejemplo, haciendo una petición POST
+        console.log("Artículo creado:", articleData, selectedCategories);
+    };
+
+    if (loading) return <p>Cargando categorías...</p>;
+    if (error) return <p>Error: {error}</p>;
+
     return (
-        <form className="form">
+        <form className="form" onSubmit={handleSubmit}>
             <div>
-                <label>Titulo</label>
+                <label>Título</label>
                 <div>
                     <input
                         className="input"
@@ -58,10 +53,10 @@ const ArticleForm = () => {
                 <div>
                     <textarea
                         className="textarea"
-                        type="text"
                         name="content"
                         value={articleData.content}
-                        onChange={handleInputChange} />
+                        onChange={handleInputChange}
+                    />
                 </div>
             </div>
 
@@ -83,14 +78,12 @@ const ArticleForm = () => {
                 </div>
             </div>
             <div>
-                <div>
-                    <button className="create-button" type="submit">
-                        Crear artículo
-                    </button>
-                </div>
+                <button className="create-button" type="submit">
+                    Crear artículo
+                </button>
             </div>
         </form>
-    )
-}
+    );
+};
 
 export default ArticleForm;
