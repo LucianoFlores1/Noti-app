@@ -54,7 +54,7 @@ const Articles = () => {
 
     return (
         <div className="articles-data-container">
-            <h1>Artículos:</h1>
+            <h1 className="art">Artículos:</h1>
             <div className="search-container">
                 <input
                     type="text"
