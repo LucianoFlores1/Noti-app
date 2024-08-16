@@ -1,44 +1,128 @@
 import { useState, useEffect } from "react";
-import { useFetchCategories } from "../hooks/fetchCategories";
-import "./ArticleForm.css"
+import { useAuth } from "../contexts/AuthContext";
 
-const ArticleForm = () => {
-    const { categories, loading, error } = useFetchCategories();
-    const [selectedCategories, setSelectedCategories] = useState([]);
+export default function ArticleForm() {
     const [articleData, setArticleData] = useState({ title: "", content: "" });
+    const [categories, setCategories] = useState([]);
+    const [selectedCategories, setSelectedCategories] = useState([]);
+    const [loadingCategories, setLoadingCategories] = useState(true);
+    const [submitting, setSubmitting] = useState(false);
+    const [articleImage, setArticleImage] = useState(null);
 
-    const handleInputChange = (event) => {
+    const state = useAuth("state");
+    let token = state.token;
+    console.log("state", state);
+    console.log(token);
+
+    useEffect(
+        () => {
+            fetch(`${import.meta.env.VITE_API_BASE_URL}infosphere/categories/`)
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error(
+                            "No se puedieron cargar las categorías"
+                        );
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    setCategories(data.results);
+                })
+                .catch((error) => {
+                    console.error("Error al realizar la petición", error);
+                })
+                .finally(() => {
+                    return setLoadingCategories(false);
+                });
+        },
+        []
+    );
+
+    function handleInputChange(event) {
         setArticleData({
             ...articleData,
             [event.target.name]: event.target.value,
         });
-    };
+    }
 
-    const handleCategoryChange = (event) => {
+    function handleCategoryChange(event) {
         const selectedOptions = Array.from(
             event.target.selectedOptions,
+            // Referenciamos el id de la categoría que resolvió la petición a la API
             (option) => option.value
         );
+
+        // Filtramos de las categorías consultadas a la API los nuevos elementos seleccionados
         const updatedSelectedCategories = categories.filter((cat) =>
             selectedOptions.includes(String(cat.id))
         );
+
         setSelectedCategories(updatedSelectedCategories);
-    };
+    }
 
-    const handleSubmit = (event) => {
+    function handleImageChange(event) {
+        setArticleImage(event.target.files[0]);
+    }
+
+    function handleSubmit(event) {
         event.preventDefault();
-        // Lógica para enviar el formulario, por ejemplo, haciendo una petición POST
-        console.log("Artículo creado:", articleData, selectedCategories);
-    };
-
-    if (loading) return <p>Cargando categorías...</p>;
-    if (error) return <p>Error: {error}</p>;
+        if (!submitting && !loadingCategories) {
+            setSubmitting(true);
+            const newForm = new FormData();
+            newForm.append("title", articleData.title);
+            newForm.append("content", articleData.content);
+            if (articleImage) {
+                newForm.append("image", articleImage);
+            }
+            fetch(`${import.meta.env.VITE_API_BASE_URL}infosphere/articles/`, {
+                method: "POST",
+                headers: {
+                    Authorization: `Token ${token}`,
+                },
+                body: newForm,
+            })
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error("No se pudo crear el artículo");
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    selectedCategories.forEach((category) => {
+                        fetch(
+                            `${import.meta.env.VITE_API_BASE_URL
+                            }infosphere/article-categories/`,
+                            {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                    Authorization: `Token ${token}`,
+                                },
+                                body: JSON.stringify({
+                                    article: data.id,
+                                    category: category.id,
+                                }),
+                            }
+                        );
+                    });
+                })
+                .catch((error) => {
+                    console.error("Error error al crear el artículo", error);
+                })
+                .finally(() => {
+                    return setSubmitting(false);
+                });
+        }
+    }
 
     return (
-        <form className="form" onSubmit={handleSubmit}>
-            <div>
-                <label>Título</label>
-                <div>
+        <form
+            className={`box m-4 p-4 has-background-dark`}
+            onSubmit={handleSubmit}
+        >
+            <div className="field">
+                <label className="label">Título</label>
+                <div className="control">
                     <input
                         className="input"
                         type="text"
@@ -48,9 +132,9 @@ const ArticleForm = () => {
                     />
                 </div>
             </div>
-            <div>
-                <label>Contenido</label>
-                <div>
+            <div className="field">
+                <label className="label">Contenido</label>
+                <div className="control">
                     <textarea
                         className="textarea"
                         name="content"
@@ -59,10 +143,20 @@ const ArticleForm = () => {
                     />
                 </div>
             </div>
-
-            <div>
-                <label>Categorías</label>
-                <div>
+            <div className="field">
+                <label className="label">Imagen:</label>
+                <div className="control">
+                    <input
+                        className="input"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageChange}
+                    />
+                </div>
+            </div>
+            <div className="field">
+                <label className="label">Categorías:</label>
+                <div className="select is-fullwidth is-multiple">
                     <select
                         multiple
                         size="5"
@@ -77,13 +171,17 @@ const ArticleForm = () => {
                     </select>
                 </div>
             </div>
-            <div>
-                <button className="create-button" type="submit">
-                    Crear artículo
-                </button>
+            <div className="field">
+                <div className="control">
+                    <button
+                        className="button is-primary"
+                        type="submit"
+                        disabled={submitting || loadingCategories}
+                    >
+                        Crear Artículo
+                    </button>
+                </div>
             </div>
         </form>
     );
-};
-
-export default ArticleForm;
+}
