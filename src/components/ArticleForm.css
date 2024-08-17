@@ -38,15 +38,19 @@ select {
     resize: vertical; /* Permite al usuario redimensionar la altura */
 }
 
-.textarea:focus {
-    border-color: #66afe9;
-    outline: none;
-    box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
+.textarea-abstract {
+    width: 100%; /* Ajusta el ancho del contenedor */
+    height: 80px; /* Ajusta la altura del contenedor */
+    padding: 8px; /* Espaciado interno */
+    font-size: 14px; /* Tamaño de la fuente */
+    line-height: 1.5; /* Altura de línea */
+    resize: none; /* Evita que el usuario cambie el tamaño */
+    background-color: #45a049;
 }
-
 
 .input:focus,
 .textarea:focus,
+.textarea-abstract:focus,
 select:focus {
     border-color: #66afe9;
     outline: none;

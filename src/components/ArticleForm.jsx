@@ -5,7 +5,8 @@ import "./ArticleForm.css"
 export default function ArticleForm() {
     const [categories, setCategories] = useState([]);
     const [selectedCategories, setSelectedCategories] = useState([]);
-    const [articleData, setArticleData] = useState({ title: "", content: "" });
+    const [articleData, setArticleData] = useState({ title: "", content: "", abstract: "" });
+    const [imageFile, setImageFile] = useState(null);
     const [submitting, setSubmitting] = useState(false);
     const [loadingCategories, setLoadingCategories] = useState(true);
 
@@ -14,7 +15,7 @@ export default function ArticleForm() {
     console.log("state", state);
     console.log(token);
 
-    // Fetch categories with pagination handling
+
     const fetchCategories = async (url) => {
         try {
             const response = await fetch(url);
@@ -23,14 +24,13 @@ export default function ArticleForm() {
             }
             const data = await response.json();
             if (data.next) {
-                // Combine current categories with the next page's categories
                 setCategories((prevCategories) => [
                     ...prevCategories,
                     ...data.results,
                 ]);
-                fetchCategories(data.next); // Fetch the next page
+                fetchCategories(data.next);
             } else {
-                // No more pages, set categories to final result
+
                 setCategories((prevCategories) => [...prevCategories, ...data.results]);
             }
         } catch (error) {
@@ -68,13 +68,29 @@ export default function ArticleForm() {
 
         if (!submitting && !loadingCategories) {
             setSubmitting(true);
+
+            // Crear una instancia de FormData
+            const formData = new FormData();
+            formData.append('title', articleData.title);
+            formData.append('content', articleData.content);
+            formData.append('abstract', articleData.abstract); // Añadir el abstract
+
+            // Agregar categorías seleccionadas
+            selectedCategories.forEach((category) => {
+                formData.append('categories', category.id);
+            });
+
+            // Agregar la imagen si es que se seleccionó una
+            if (imageFile) {
+                formData.append('image', imageFile);
+            }
+
             fetch(`${import.meta.env.VITE_API_BASE_URL}infosphere/articles/`, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
                     Authorization: `Token ${token}`,
                 },
-                body: JSON.stringify(articleData),
+                body: formData,
             })
                 .then((response) => {
                     if (!response.ok) {
@@ -122,6 +138,18 @@ export default function ArticleForm() {
                 </div>
             </div>
             <div>
+                <label className="label">Copete</label>
+                <div>
+                    <textarea
+                        className="textarea-abstract"
+                        name="abstract"
+                        value={articleData.abstract}
+                        onChange={handleInputChange}
+                        required
+                    />
+                </div>
+            </div>
+            <div>
                 <label className="label">Contenido</label>
                 <div>
                     <textarea
@@ -131,6 +159,17 @@ export default function ArticleForm() {
                         value={articleData.content}
                         onChange={handleInputChange}
                         required
+                    />
+                </div>
+            </div>
+            <div>
+                <label className="label">Imagen</label>
+                <div>
+                    <input
+                        className="input"
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => setImageFile(e.target.files[0])}
                     />
                 </div>
             </div>
