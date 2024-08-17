@@ -57,6 +57,7 @@ const Home = () => {
 
     return (
         <div className="articles-data-container">
+            <div className="logo"><img src="/ikm.png" alt="" /></div>
             <h1>Home:</h1>
             <div className="aestetic-container">
 

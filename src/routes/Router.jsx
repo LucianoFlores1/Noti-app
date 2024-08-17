@@ -1,16 +1,16 @@
 import { createBrowserRouter } from "react-router-dom";
 //import de las direcciones
-import Home from '../components/Home'; //inicio
-import Login from '../components/Login'; //login
-import Articles from '../components/Articles'; //seccion de articulos en miniaturas
-import ArticleDetail from "../components/ArticleDetails"; // Articulo individual en primer plano
-import ArticleForm from "../components/ArticleForm"; // formulario para crear articulos
+import Home from '../components/Home';
+import Login from '../components/Login';
+import Articles from '../components/Articles';
+import ArticleDetail from "../components/ArticleDetails";
+import ArticleForm from "../components/ArticleForm";
+import Profile from "../components/Profile";
+import UpdateProfileForm from "../components/UpdateProfileForm";
 
 //
 import Layout from "./Layout";
 import ProtectedRoute from "./ProtectedRoute";
-import { CategoryList } from "../hooks/fetchCategories"; // Obtener una lista de las categorias de los articulos
-import Profile from "../components/Profile";
 
 
 const Router = createBrowserRouter([
@@ -35,6 +35,16 @@ const Router = createBrowserRouter([
                     </ProtectedRoute>
                 ),
             },
+            
+            {
+                path: "profile",
+                element: (
+                    <ProtectedRoute>
+                        <Profile />
+                    </ProtectedRoute>
+                ),
+            },
+
             {
                 path: "articles/:id",
                 element: (
@@ -46,15 +56,12 @@ const Router = createBrowserRouter([
                 path: "create",
                 element: <ArticleForm />
             },
+
             {
-                path: "categories",
-                element: <CategoryList />
-            },
-            {
-                path: "profile",
+                path: "updateprofile/:{user__id}/",
                 element: (
                     <ProtectedRoute>
-                        <Profile />
+                        <UpdateProfileForm />
                     </ProtectedRoute>
                 ),
             }
