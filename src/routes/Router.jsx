@@ -11,7 +11,7 @@ import Layout from "./Layout";
 import ProtectedRoute from "./ProtectedRoute";
 import { CategoryList } from "../hooks/useFetchCategories"; // Obtener una lista de las categorias de los articulos
 import Profile from "../components/Profile";
-
+import UpdateProfileForm from "../components/UpdateProfileForm";
 
 const Router = createBrowserRouter([
     {
