@@ -1,3 +1,4 @@
+
 import { Outlet } from "react-router-dom";
 import { AuthProvider } from "../contexts/AuthContext";
 import NavBar from "../components/NavBar";
@@ -16,5 +17,3 @@ export default function Layout() {
         </AuthProvider>
     );
 }
-
-//faltan 69 y hay 43 bloques <ThemeProvider> </ThemeProvider>

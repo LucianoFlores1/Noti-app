@@ -35,7 +35,6 @@ const Router = createBrowserRouter([
                     </ProtectedRoute>
                 ),
             },
-
             {
                 path: "profile",
                 element: (
@@ -65,6 +64,14 @@ const Router = createBrowserRouter([
                         <CategoryList />
                     </ProtectedRoute>
 
+                ),
+            },
+            {
+                path: "updateprofile/:{user__id}/",
+                element: (
+                    <ProtectedRoute>
+                        <UpdateProfileForm />
+                    </ProtectedRoute>
                 ),
             }
         ],
