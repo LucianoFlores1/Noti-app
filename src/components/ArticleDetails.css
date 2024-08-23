@@ -1,7 +1,7 @@
 /* Container principal del artículo */
 .article-detail {
     padding: 30px 60px 30px 30px;
-    margin: 20px 0px 20px 20px;
+    margin: 20px 0px 20px 50px;
     max-width: 1200px; /* Aumento del ancho máximo del contenedor */
     background-color: #f9f9f9; /* Fondo claro para el artículo */
     border-radius: 8px;
@@ -9,21 +9,21 @@
     color: #333; /* Texto oscuro */
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Espaciado entre los elementos */
+    gap: 0px; /* Espaciado entre los elementos */
 }
 
 /* Título del artículo */
 .article-detail h1 {
     font-size: 2.5rem; /* Tamaño del texto del título aumentado */
     color: #333; /* Color del texto del título */
-    margin-bottom: 15px;
+    margin-bottom: 0px;
 }
 
 /* Abstracto del artículo */
 .article-detail h4 {
     font-size: 1.5rem; /* Tamaño del texto del abstracto aumentado */
     color: #666; /* Gris para el abstracto */
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 /* Contenido del artículo */
