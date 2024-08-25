@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useFetch from "../hooks/useFetch";
 import './Home.css'
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     const [page, setPage] = useState(1);
@@ -71,6 +72,10 @@ const Home = () => {
     return (
         <div className="articles-data-container">
             <div className="logo"><img src="/ikm.png" alt="Logo" /></div>
+            <Link to="/articles/" className="floating-icon-container">
+                <img src="/Miniaturas-blancas-fondo-gris.jpg" alt="Cambio de vista" className="icon-button" />
+                <span className="tooltip-text">Cambio de vista: Miniaturas</span>
+            </Link>
             <h1>Articulos:</h1>
             <div className="aestetic-container">
                 <div className="search-container">
@@ -86,7 +91,6 @@ const Home = () => {
                         Buscar
                     </button>
                 </div>
-                <h5>Noticias del día</h5>
                 {articles.length > 0 ? (
                     <div>
                         {articles.map((article) => (
@@ -96,7 +100,7 @@ const Home = () => {
                                 <p>{stripHTMLTags(article.content)}</p>
                                 {article.image && <img src={article.image} alt="No" className="article-image" />}
                                 <div className="article-footer">
-                                    <p><strong>Author:</strong> {stripHTMLTags(article.author)}</p>
+
                                     <p><strong>Views:</strong> {article.view_count}</p>
                                     <p className="date"><strong>Fecha de publicación:</strong> {dateExist(article.created_at)}</p>
                                 </div>

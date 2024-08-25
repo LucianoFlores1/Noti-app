@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import './Articles.css';
+import { Link } from 'react-router-dom';
 
 const Articles = () => {
     const [page, setPage] = useState(1);
@@ -64,6 +65,10 @@ const Articles = () => {
     return (
         <div className="articles-data-container">
             <div className="logo"><img src="/ikm.png" alt="Logo" /></div>
+            <Link to="/articles/cascading" className="floating-icon-container">
+                <img src="/Lineas-blancas-fondo-gris.jpg" alt="Cambio de vista" className="icon-button" />
+                <span className="tooltip-text">Cambio de vista: Cascada</span>
+            </Link>
             <h1 className="art">Artículos:</h1>
             <div className="search-container">
                 <input

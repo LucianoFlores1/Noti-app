@@ -5,7 +5,6 @@
 }
 
 h1 {
-    padding-top: 50px;
     text-align: center;
     color: #333;
     font-family: 'Montserrat', sans-serif;
@@ -119,4 +118,52 @@ h1 {
 .load-more-button:hover {
     background-color: #0056b3;
     transform: scale(1.05);
+}
+
+.floating-icon-container {
+    position: fixed; 
+    bottom: 20px; /* top: 20px;  Ajusta la posición superior según sea necesario */
+    right: 20px; 
+    z-index: 1000; /*Posiciona el icono arriba de todos los elementos*/
+    display: flex; 
+    align-items: center; 
+}
+
+.icon-button {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    z-index: 1001; /* Asegura que esté por encima del tooltip */
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.icon-button:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+.tooltip-text {
+    visibility: hidden;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1001; 
+    top: 50%; 
+    right: 100%; 
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+}
+
+.floating-icon-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
 }

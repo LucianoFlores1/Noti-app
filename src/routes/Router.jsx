@@ -73,6 +73,12 @@ const Router = createBrowserRouter([
                         <UpdateProfileForm />
                     </ProtectedRoute>
                 ),
+            },
+            {
+                path: "articles/cascading",
+                element: (
+                    <Home />
+                )
             }
         ],
     },
