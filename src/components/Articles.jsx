@@ -63,6 +63,7 @@ const Articles = () => {
 
     return (
         <div className="articles-data-container">
+            <div className="logo"><img src="/ikm.png" alt="Logo" /></div>
             <h1 className="art">Artículos:</h1>
             <div className="search-container">
                 <input
