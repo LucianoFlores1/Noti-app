@@ -12,6 +12,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import { CategoryList } from "../hooks/useFetchCategories"; // Obtener una lista de las categorias de los articulos
 import Profile from "../components/Profile";
 import UpdateProfileForm from "../components/UpdateProfileForm";
+import Presentation from "../components/Presentation";
 
 const Router = createBrowserRouter([
     {
@@ -21,7 +22,7 @@ const Router = createBrowserRouter([
                 index: true, // path: "/"
                 element:
 
-                    <Home />,
+                    <Presentation />,
             },
             {
                 path: "login",
