@@ -3,7 +3,7 @@
     padding: 30px 40px 30px 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
+    max-width: 850px;
     margin: 0 auto;
     margin-top: 60px;
 }
@@ -22,8 +22,8 @@ select {
     border-radius: 5px;
     border: 1px solid #cccccc;
     font-size: 16px;
-    color: #333333;
-    background-color: #f9f9f9;
+    color: #333333; /* Texto oscuro */
+    background-color: #f9f9f9; /* Fondo claro */
 }
 
 .textarea {
@@ -33,8 +33,8 @@ select {
     border-radius: 5px;
     border: 1px solid #cccccc;
     font-size: 16px;
-    color: #333333;
-    background-color: #f9f9f9;
+    color: #333333; /* Texto oscuro */
+    background-color: #f9f9f9; /* Fondo claro */
     resize: vertical; /* Permite al usuario redimensionar la altura */
 }
 
@@ -45,7 +45,8 @@ select {
     font-size: 14px; /* Tamaño de la fuente */
     line-height: 1.5; /* Altura de línea */
     resize: none; /* Evita que el usuario cambie el tamaño */
-    background-color: #45a049;
+    color: #333333; /* Asegura que el texto sea visible */
+    background-color: #f9f9f9; /* Fondo claro */
 }
 
 .input:focus,
