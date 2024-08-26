@@ -61,3 +61,4 @@ const AgregarComentario = ({ onCommentAdded }) => {
 };
 
 export default AgregarComentario;
+//Aun no se pueden agregar comentarios
