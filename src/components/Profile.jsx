@@ -38,8 +38,6 @@ function Profile() {
             })
     },[])
 
-    // console.log(userData);
-
     const handleImageUpload = (image) => {
         setProfileImage(image);
     }
@@ -111,6 +109,7 @@ function Profile() {
                          
                          <p className="bio">
                          Mi Biografia:
+                         <br />
                          <br />
                             <span className="bioSpan">
                                 <br />

@@ -2,14 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import './Articles.css';
-import { Link } from 'react-router-dom';
 
 const Articles = () => {
     const [page, setPage] = useState(1);
     const [articles, setArticles] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
-    const [hasMore, setHasMore] = useState(true); // Nuevo estado para controlar la visibilidad del botón
     const navigate = useNavigate();
 
     const { data, isLoading, isError } = useFetch(
@@ -23,11 +21,6 @@ const Articles = () => {
     useEffect(() => {
         if (data && data.results) {
             setArticles(prevArticles => (page === 1 ? data.results : [...prevArticles, ...data.results]));
-
-            // Verifica si hay más artículos para cargar
-            if (data.results.length < 10) { // Supón que hay 10 artículos por página
-                setHasMore(false);
-            }
         }
     }, [data, page]);
 
@@ -39,7 +32,6 @@ const Articles = () => {
         setPage(1);
         setArticles([]);
         setSearchTerm(searchQuery);
-        setHasMore(true); // Resetea el estado de `hasMore` al realizar una nueva búsqueda
     };
 
     const handleKeyPress = (e) => {
@@ -49,9 +41,7 @@ const Articles = () => {
     };
 
     const handleLoadMore = () => {
-        if (hasMore) {
-            setPage(prevPage => prevPage + 1);
-        }
+        setPage(prevPage => prevPage + 1);
     };
 
     if (isLoading && page === 1) {
@@ -64,18 +54,13 @@ const Articles = () => {
 
     return (
         <div className="articles-data-container">
-            <div className="logo"><img src="/ikm.png" alt="Logo" /></div>
-            <Link to="/articles/cascading" className="floating-icon-container">
-                <img src="/Lineas-blancas-fondo-gris.jpg" alt="Cambio de vista" className="icon-button" />
-                <span className="tooltip-text">Cambio de vista: Cascada</span>
-            </Link>
             <h1 className="art">Artículos:</h1>
             <div className="search-container">
                 <input
                     type="text"
                     placeholder="Buscar por título..."
                     onChange={handleSearchInputChange}
-                    onKeyDown={handleKeyPress}
+                    onKeyDown={handleKeyPress} // Maneja el enter
                     className="search-bar"
                     value={searchQuery}
                 />
@@ -85,9 +70,9 @@ const Articles = () => {
             </div>
             <div className="articles-grid">
                 {articles.length > 0 ? (
-                    articles.map((article) => (
+                    articles.map((article, index) => (
                         <div
-                            key={article.id}
+                            key={`${article.id}-${index}`}
                             className="article-card"
                             onClick={() => navigate(`/articles/${article.id}`)}
                         >
@@ -100,13 +85,12 @@ const Articles = () => {
                     <p>No hay artículos disponibles.</p>
                 )}
             </div>
-            {hasMore && !isLoading && (
-                <button onClick={handleLoadMore} className="load-more-button">
-                    Cargar más
-                </button>
-            )}
+            <button onClick={handleLoadMore} className="load-more-button">
+                Cargar más
+            </button>
         </div>
     );
 };
 
 export default Articles;
+
