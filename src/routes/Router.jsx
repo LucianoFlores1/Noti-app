@@ -13,6 +13,7 @@ import Layout from "./Layout";
 import ProtectedRoute from "./ProtectedRoute";
 import AgregarComentario from "../components/AgregarComentario";
 import EliminarComentario from "../components/EliminarComentario";
+import Presentation from "../components/Presentation";
 
 
 const Router = createBrowserRouter([
@@ -23,7 +24,7 @@ const Router = createBrowserRouter([
                 index: true, // path: "/"
                 element:
 
-                    <Home />,
+                    <Presentation />,
             },
             {
                 path: "login",
