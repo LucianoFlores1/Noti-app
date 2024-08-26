@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { useNavigate } from "react-router-dom";
 import './AgregarComentario.css'; // Importa el archivo CSS
 
 const AgregarComentario = ({ onCommentAdded }) => {
+    const navigate = useNavigate();
     const { id } = useParams();
     const [content, setContent] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -36,6 +38,7 @@ const AgregarComentario = ({ onCommentAdded }) => {
             const newComment = await response.json();
             //onCommentAdded(newComment); // Notifica al componente padre que se ha añadido un nuevo comentario
             setContent(''); // Limpia el campo de texto
+            navigate(0);
         } catch (err) {
             setError(err.message);
         } finally {

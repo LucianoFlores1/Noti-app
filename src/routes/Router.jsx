@@ -12,6 +12,7 @@ import EliminarArt from "../components/EliminarArticulo";
 import Layout from "./Layout";
 import ProtectedRoute from "./ProtectedRoute";
 import AgregarComentario from "../components/AgregarComentario";
+import EliminarComentario from "../components/EliminarComentario";
 
 
 const Router = createBrowserRouter([
@@ -97,6 +98,16 @@ const Router = createBrowserRouter([
                     </ProtectedRoute>
                 ),
             },
+
+            {
+                path: "/infosphere/comments/:{id}/",
+                element: (
+                    <ProtectedRoute>
+                        <EliminarComentario />
+                    </ProtectedRoute>
+                ),
+            },
+
         ],
     },
     {

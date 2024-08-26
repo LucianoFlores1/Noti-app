@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import AgregarComentario from './AgregarComentario';
+import EliminarComentario from './EliminarComentario';
 import './Comentarios.css';
 
 const Comentarios = () => {
@@ -14,6 +15,10 @@ const Comentarios = () => {
             'X-CSRFToken': 'Ih8y5vTuecu6We9MbCHbjn7hA7JEjsnifqoTWon9h5b9WAdKbyKg9zuId52mlxhW',
         },
     });
+
+    const handleDeleteSuccess = () => {
+        window.location.href = window.location.href;
+      };
 
     useEffect(() => {
         if (data && data.results) {
@@ -34,7 +39,7 @@ const Comentarios = () => {
         <div className="comments-section">
             <h1 className='comentarios'>Comentarios</h1>
 
-            <AgregarComentario><textarea name="" id=""></textarea></AgregarComentario>
+            <AgregarComentario></AgregarComentario>
 
             {comments.length > 0 ? (
                 comments.map((comment) => (
@@ -44,6 +49,9 @@ const Comentarios = () => {
                             <p>
                                 Creado el: {new Date(comment.created_at).toLocaleString()}
                             </p>
+                            <EliminarComentario id={comment.id} onDeleteSuccess={handleDeleteSuccess} />
+
+
                         </div>
                     </div>
                 ))

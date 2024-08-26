@@ -16,6 +16,7 @@ function reducer(state, action) {
         case ACTIONS.LOGIN:
             return {
                 ...state,
+                user__id: action.payload.user__id,
                 token: action.payload,
                 isAuthenticated: true,
             };
