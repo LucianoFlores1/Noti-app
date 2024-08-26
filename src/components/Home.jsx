@@ -60,7 +60,6 @@ const Home = () => {
             <div className="logo"><img src="/ikm.png" alt="" /></div>
             <h1>Home:</h1>
             <div className="aestetic-container">
-
                 <div className="search-container">
                     <input
                         type="text"
@@ -74,7 +73,7 @@ const Home = () => {
                         Buscar
                     </button>
                 </div>
-                <h5>Noticias del dia</h5>
+                <h2>Noticias del dia</h2>
                 {articles.length > 0 ? (
                     <div>
                         {articles.map((article) => (
@@ -84,7 +83,7 @@ const Home = () => {
                                 <p>{article.content}</p>
                                 {article.image && <img src={article.image} alt="No" className="article-image" />}
                                 <div className="article-footer">
-                                    <p><strong>Author:</strong> {article.author}</p>
+                                    {/* <p><strong>Author:</strong> {article.author}</p> */}
                                     <p><strong>Views:</strong> {article.view_count}</p>
                                     <p className="date"><strong> Fecha de publicacion: </strong>{dateExist(article.created_at)}</p>
                                 </div>

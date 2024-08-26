@@ -84,7 +84,6 @@ function Profile() {
                             disabled={true}
                             value={userData.user__id}
                          />
-
                     </form>
                     <p className="subtitle is-6"> {userData.bio || "Biografia no disponible"} </p>
                     <div className="columns">

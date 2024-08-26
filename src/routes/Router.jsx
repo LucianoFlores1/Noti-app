@@ -10,6 +10,7 @@ import Profile from "../components/Profile";
 //
 import Layout from "./Layout";
 import ProtectedRoute from "./ProtectedRoute";
+import AgregarComentario from "../components/AgregarComentario";
 
 
 const Router = createBrowserRouter([

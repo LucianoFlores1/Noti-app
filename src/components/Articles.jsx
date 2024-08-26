@@ -70,9 +70,9 @@ const Articles = () => {
             </div>
             <div className="articles-grid">
                 {articles.length > 0 ? (
-                    articles.map((article) => (
+                    articles.map((article, index) => (
                         <div
-                            key={article.id}
+                            key={`${article.id}-${index}`}
                             className="article-card"
                             onClick={() => navigate(`/articles/${article.id}`)}
                         >
