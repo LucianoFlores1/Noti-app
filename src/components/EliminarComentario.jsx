@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
+import './Profile.css';
 
 
 function EliminarComentario({ id, onDeleteSuccess }) {
@@ -100,8 +101,8 @@ function EliminarComentario({ id, onDeleteSuccess }) {
 
   return (
     <>
-      <button onClick={handleDelete} disabled={isDeleting}>
-        {isDeleting ? 'Eliminando...' : 'Eliminar Comentario'}<i className="fa-solid fa-trash"></i>
+      <button className='btnTrash' onClick={handleDelete} disabled={isDeleting}>
+        {isDeleting ? 'Eliminando...' : ''}<i className="fa-solid fa-trash"><img src="/public/trash.ico" width='25px' alt="" /></i>
       </button>
       {error && <div className="error-message">{error}</div>}
     </>
