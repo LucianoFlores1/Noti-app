@@ -1,28 +1,31 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import './AgregarComentario.css'; // Importa el archivo CSS
 
 const AgregarComentario = ({ onCommentAdded }) => {
-    const { id } = useParams(); // Obtener el ID del artículo desde la URL
+    const { id } = useParams();
     const [content, setContent] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState(null);
+
+    const state = useAuth("state");
+    let token = state.token;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
 
-    const state = useAuth("state");
-    let token = state.token;
-    console.log("state", state);
-    console.log(token);
-
         try {
             const response = await fetch(`https://sandbox.academiadevelopers.com/infosphere/comments/`, {
                 method: 'POST',
                 headers: {
-                    Authorization: `Token ${token}`,
+                    'accept' : 'application/json' ,
+                    'Authorization' : `Token ${token}`,
+                    'X-CSRFToken': 'kwX597cqhKUv3caED1ZqJxb3zHuZSQsSRFdq00G5kDBy3yeCDX2vzJyucFNHUVmw',
+                    'Content-Type': 'application/json'
                 },
+                credentials: 'include',
                 body: JSON.stringify({ content, article: id }),
             });
 
@@ -31,7 +34,7 @@ const AgregarComentario = ({ onCommentAdded }) => {
             }
 
             const newComment = await response.json();
-            onCommentAdded(newComment); // Notifica al componente padre que se ha añadido un nuevo comentario
+            //onCommentAdded(newComment); // Notifica al componente padre que se ha añadido un nuevo comentario
             setContent(''); // Limpia el campo de texto
         } catch (err) {
             setError(err.message);
@@ -41,24 +44,24 @@ const AgregarComentario = ({ onCommentAdded }) => {
     };
 
     return (
-        <div className="add-comment">
-            <h2>Agregar un comentario</h2>
-            <form onSubmit={handleSubmit}>
+        <div className="add-comment-container">
+            <h2 className="comment-title">Agregar un comentario</h2>
+            <form onSubmit={handleSubmit} className="comment-form">
                 <textarea
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
-                    placeholder="Escribe tu comentario aquí"
+                    placeholder="Escribe tu comentario aquí..."
                     rows="4"
                     required
+                    className="comment-textarea"
                 ></textarea>
-                <button type="submit" disabled={isSubmitting}>
+                <button type="submit" className="comment-submit-btn" disabled={isSubmitting}>
                     {isSubmitting ? 'Enviando...' : 'Enviar'}
                 </button>
             </form>
-            {error && <p className="error">{error}</p>}
+            {error && <p className="comment-error">{error}</p>}
         </div>
     );
 };
 
 export default AgregarComentario;
-//Aun no se pueden agregar comentarios
