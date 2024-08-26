@@ -38,8 +38,6 @@ function Profile() {
             })
     },[])
 
-    // console.log(userData);
-
     const handleImageUpload = (image) => {
         setProfileImage(image);
     }

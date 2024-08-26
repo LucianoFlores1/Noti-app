@@ -4,7 +4,7 @@ import useFetch from '../hooks/useFetch';
 import './ArticleDetails.css'
 import Comentarios from './Comentarios';
 import AgregarComentario from './AgregarComentario';
-// import EliminarArticulo from './EliminarArticulo';
+import EliminarArticulo from './EliminarArticulo';
 
 const ArticleDetail = () => {
     const { id } = useParams(); // Obtener el ID del artículo desde la URL
@@ -60,7 +60,7 @@ const ArticleDetail = () => {
 
             <Comentarios articleData={id}/>
 
-                {/* <EliminarArticulo id={article.id} onDeleteSuccess={handleDeleteSuccess} /> */}
+            <EliminarArticulo id={article.id} onDeleteSuccess={handleDeleteSuccess} />
         </div>
     );
 };

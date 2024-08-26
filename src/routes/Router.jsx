@@ -8,6 +8,7 @@ import ArticleForm from "../components/ArticleForm";
 import Profile from "../components/Profile";
 import UpdateProfileForm from "../components/UpdateProfileForm";
 import Comentarios from "../components/Comentarios";
+import EliminarArt from "../components/EliminarArticulo";
 
 //
 import Layout from "./Layout";
@@ -86,6 +87,15 @@ const Router = createBrowserRouter([
                 element: (
                     <ProtectedRoute>
                         <AgregarComentario />
+                    </ProtectedRoute>
+                ),
+            },
+
+            {
+                path: "/infosphere/articles/:{id}/",
+                element: (
+                    <ProtectedRoute>
+                        <EliminarArt />
                     </ProtectedRoute>
                 ),
             },

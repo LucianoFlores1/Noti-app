@@ -16,7 +16,7 @@ function EliminarArt({ id, onDeleteSuccess }) {
       cancelButtonText: 'Cancelar',
       allowOutsideClick: false,
       allowEscapeKey: false,
-      allowEnterKey: false
+      allowEnterKey: true
     });
 
     if (!result.isConfirmed) {
@@ -27,7 +27,6 @@ function EliminarArt({ id, onDeleteSuccess }) {
     setError(null);
 
     const token = localStorage.getItem('authToken');
-    console.log("Token", token);
 
     if (!token) {
       Swal.fire({
@@ -37,7 +36,7 @@ function EliminarArt({ id, onDeleteSuccess }) {
         confirmButtonText: 'OK',
         allowOutsideClick: false,
         allowEscapeKey: false,
-        allowEnterKey: false
+        allowEnterKey: true
       });
       setIsDeleting(false);
       return;
@@ -50,8 +49,8 @@ function EliminarArt({ id, onDeleteSuccess }) {
           method: 'DELETE',
           headers: {
             'accept' : 'application/json' ,
-            'Authorization' : `Bearer ${token}`,
-            'X-CSRFToken': 'Yo0AMhNgyr55wRFVDC4enFmjq0uHZYllvxgVDahVBkM8wdJTDy7jdRJK3YNp13fZ',
+            'Authorization' : `Token ${token}`,
+            'X-CSRFToken': 'kwX597cqhKUv3caED1ZqJxb3zHuZSQsSRFdq00G5kDBy3yeCDX2vzJyucFNHUVmw',
             
           },
           credentials: 'include',
@@ -61,12 +60,12 @@ function EliminarArt({ id, onDeleteSuccess }) {
       if (response.ok) {
         Swal.fire({
           title: 'Eliminado',
-          text: 'La canción ha sido eliminada con éxito.',
+          text: 'El artículo ha sido eliminado con éxito.',
           icon: 'success',
           confirmButtonText: 'OK',
           allowOutsideClick: false,
           allowEscapeKey: false,
-          allowEnterKey: false
+          allowEnterKey: true
         }).then(() => {
           if (onDeleteSuccess) {
             onDeleteSuccess();
@@ -76,12 +75,12 @@ function EliminarArt({ id, onDeleteSuccess }) {
         const errorData = await response.json();
         Swal.fire({
           title: 'Error',
-          text: errorData.message || 'Error al eliminar el artículo.',
+          text: errorData.message || 'Error. No eres propietario de este articulo',
           icon: 'error',
           confirmButtonText: 'OK',
           allowOutsideClick: false,
           allowEscapeKey: false,
-          allowEnterKey: false
+          allowEnterKey: true
         });
       }
     } catch (e) {
@@ -92,7 +91,7 @@ function EliminarArt({ id, onDeleteSuccess }) {
         confirmButtonText: 'OK',
         allowOutsideClick: false,
         allowEscapeKey: false,
-        allowEnterKey: false
+        allowEnterKey: true
       });
     } finally {
       setIsDeleting(false);
