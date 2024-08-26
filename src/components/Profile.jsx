@@ -112,6 +112,7 @@ function Profile() {
                          <p className="bio">
                          Mi Biografia:
                          <br />
+                         <br />
                             <span className="bioSpan">
                                 <br />
                                 {userData.bio || "Biografia no disponible"}

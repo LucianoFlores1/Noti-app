@@ -135,7 +135,7 @@
     width: 80%; /* Ajusta este valor según lo necesites */
     max-width: 400px; /* Establece un ancho máximo */
     margin: 0 auto; /* Centra el formulario horizontalmente */
-    padding: 20px;
+    padding: 5%;
     background-color: #3f3f3f;
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
