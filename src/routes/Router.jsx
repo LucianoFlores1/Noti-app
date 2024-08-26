@@ -1,18 +1,20 @@
 import { createBrowserRouter } from "react-router-dom";
 //import de las direcciones
-import Home from '../components/Home'; //inicio
-import Login from '../components/Login'; //login
-import Articles from '../components/Articles'; //seccion de articulos en miniaturas
-import ArticleDetail from "../components/ArticleDetails"; // Articulo individual en primer plano
-import ArticleForm from "../components/ArticleForm"; // formulario para crear articulos
-
-//
-import Layout from "./Layout";
-import ProtectedRoute from "./ProtectedRoute";
-import { CategoryList } from "../hooks/useFetchCategories"; // Obtener una lista de las categorias de los articulos
+import Home from '../components/Home';
+import Login from '../components/Login';
+import Articles from '../components/Articles';
+import ArticleDetail from "../components/ArticleDetails";
+import ArticleForm from "../components/ArticleForm";
 import Profile from "../components/Profile";
 import UpdateProfileForm from "../components/UpdateProfileForm";
+import Comentarios from "../components/Comentarios";
+import EliminarArt from "../components/EliminarArticulo";
+import Layout from "./Layout";
+import ProtectedRoute from "./ProtectedRoute";
+import AgregarComentario from "../components/AgregarComentario";
+import EliminarComentario from "../components/EliminarComentario";
 import Presentation from "../components/Presentation";
+
 
 const Router = createBrowserRouter([
     {
@@ -36,6 +38,7 @@ const Router = createBrowserRouter([
                     </ProtectedRoute>
                 ),
             },
+            
             {
                 path: "profile",
                 element: (
@@ -54,19 +57,13 @@ const Router = createBrowserRouter([
             },
             {
                 path: "create",
-                element: <ProtectedRoute>
-                    <ArticleForm />
-                </ProtectedRoute>
-            },
-            {
-                path: "categories",
                 element: (
                     <ProtectedRoute>
-                        <CategoryList />
+                        <ArticleForm />
                     </ProtectedRoute>
-
-                ),
+                ) 
             },
+
             {
                 path: "updateprofile/:{user__id}/",
                 element: (
@@ -75,12 +72,43 @@ const Router = createBrowserRouter([
                     </ProtectedRoute>
                 ),
             },
+
             {
-                path: "articles/cascading",
+                path: "comments/articles/:{id}/",
                 element: (
-                    <Home />
-                )
-            }
+                    <ProtectedRoute>
+                        <Comentarios />
+                    </ProtectedRoute>
+                ),
+            },
+
+            {
+                path: "infosphere/comments/:{id}/",
+                element: (
+                    <ProtectedRoute>
+                        <AgregarComentario />
+                    </ProtectedRoute>
+                ),
+            },
+
+            {
+                path: "/infosphere/articles/:{id}/",
+                element: (
+                    <ProtectedRoute>
+                        <EliminarArt />
+                    </ProtectedRoute>
+                ),
+            },
+
+            {
+                path: "/infosphere/comments/:{id}/",
+                element: (
+                    <ProtectedRoute>
+                        <EliminarComentario />
+                    </ProtectedRoute>
+                ),
+            },
+
         ],
     },
     {

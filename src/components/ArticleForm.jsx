@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "../contexts/AuthContext";
-import "./ArticleForm.css"
+import "./ArticleForm.css";
 
 export default function ArticleForm() {
     const [categories, setCategories] = useState([]);
