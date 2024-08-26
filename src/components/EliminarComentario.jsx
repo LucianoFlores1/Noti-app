@@ -102,7 +102,7 @@ function EliminarComentario({ id, onDeleteSuccess }) {
   return (
     <>
       <button className='btnTrash' onClick={handleDelete} disabled={isDeleting}>
-        {isDeleting ? 'Eliminando...' : ''}<i className="fa-solid fa-trash"><img src="/public/trash.ico" width='25px' alt="" /></i>
+        {isDeleting ? 'Eliminando...' : ''}<i className="fa-solid fa-trash"><img src="/trash.ico" width='25px' alt="" /></i>
       </button>
       {error && <div className="error-message">{error}</div>}
     </>
